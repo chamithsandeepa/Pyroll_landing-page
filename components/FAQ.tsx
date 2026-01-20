@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null); // All closed initially
@@ -41,17 +42,27 @@ export default function FAQ() {
       <div className="mx-auto max-w-3xl px-6 lg:px-8 w-full z-10">
         
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
           <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
             Frequently Asked <span className="text-[#42A5E8]">Questions</span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Accordion */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div 
+            <motion.div 
               key={index} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
               className="rounded-2xl bg-white shadow-sm overflow-hidden transition-all duration-300"
             >
               <button
@@ -79,7 +90,7 @@ export default function FAQ() {
                   {faq.answer}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

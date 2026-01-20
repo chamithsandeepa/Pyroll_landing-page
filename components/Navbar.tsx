@@ -1,10 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   return (
-    <header className="bg-white sticky top-0 z-50 border-b border-gray-100">
+    <motion.header 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-white sticky top-0 z-50 border-b border-gray-100"
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         
         {/* Logo */}
@@ -52,6 +60,6 @@ export default function Navbar() {
         </div>
 
       </nav>
-    </header>
+    </motion.header>
   );
 }

@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function FreeTrial() {
   const points = [
@@ -13,11 +16,17 @@ export default function FreeTrial() {
   ];
 
   return (
-    <section id="pricing" className="bg-[#E4E8FC] pt-16 sm:pt-24 pb-16 sm:pb-24 lg:pb-0">
+    <section id="pricing" className="bg-[#E4E8FC] pt-16 sm:pt-24 pb-16 sm:pb-24 lg:pb-0 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* Top Centered Header */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-3xl text-center mb-16"
+        >
           <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
             Try It <span className="text-[#42A5E8]">Free</span> one Month
           </h2>
@@ -26,13 +35,19 @@ export default function FreeTrial() {
             system! Try it now to see how it can simplify your work, improve efficiency,
             and make Employee salaries quickly.
           </p>
-        </div>
+        </motion.div>
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-9 gap-12 items-center lg:items-end">
           
           {/* Left: Basic Plan Card */}
-          <div className="bg-[#42A5E81A] rounded-3xl p-8 sm:p-10 lg:p-12 lg:mb-24 lg:col-span-4"> 
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-[#42A5E81A] rounded-3xl p-8 sm:p-10 lg:p-12 lg:mb-24 lg:col-span-4"
+          > 
             <h3 className="text-2xl font-bold text-gray-900 font-istok mb-8">
               What Include Our basic Plan ?
             </h3>
@@ -50,14 +65,24 @@ export default function FreeTrial() {
               ))}
             </ul>
 
-            <button className="flex items-center gap-2 bg-[#42A5E8] hover:bg-[#3494D6] text-white font-medium py-3 px-8 rounded-lg transition-colors font-inter">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 bg-[#42A5E8] hover:bg-[#3494D6] text-white font-medium py-3 px-8 rounded-lg transition-colors font-inter"
+            >
               More Details
               <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
 
           {/* Right: Girl Image */}
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none flex justify-center lg:justify-end lg:col-span-5">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative mx-auto w-full max-w-md lg:max-w-none flex justify-center lg:justify-end lg:col-span-5"
+          >
             <Image
               src="/girl.png"
               alt="Professional using Payroll System"
@@ -65,7 +90,7 @@ export default function FreeTrial() {
               height={600}
               className="w-full h-auto object-contain" 
             />
-          </div>
+          </motion.div>
 
         </div>
       </div>

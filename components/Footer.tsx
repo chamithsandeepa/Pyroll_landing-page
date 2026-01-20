@@ -1,11 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import { Phone, Mail, Globe } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
     <footer className="w-full">
       {/* Main Footer Content with Gradient Background */}
-      <div className="border-t border-gray-300 bg-gradient-to-b from-white via-[#C0CFE0] to-[#4A647D] pt-16 pb-12">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="border-t border-gray-300 bg-gradient-to-b from-white via-[#C0CFE0] to-[#4A647D] pt-16 pb-12"
+      >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
             
@@ -52,7 +61,7 @@ export default function Footer() {
 
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Copyright Bar */}
       <div className="bg-[#334E68] py-6 text-center text-white border-t border-white/10">

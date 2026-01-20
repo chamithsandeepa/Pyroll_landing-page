@@ -1,13 +1,22 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function TimeSaving() {
   return (
-    <section id="contact" className="bg-white py-16 sm:py-24">
+    <section id="contact" className="bg-white py-16 sm:py-24 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-12 items-center">
           
           {/* Left: Image */}
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none flex justify-center lg:justify-start">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative mx-auto w-full max-w-md lg:max-w-none flex justify-center lg:justify-start"
+          >
             <Image
               src="/time.png"
               alt="Save time with payroll automation"
@@ -15,10 +24,16 @@ export default function TimeSaving() {
               height={700}
               className="w-full max-w-sm lg:max-w-md h-auto object-contain" 
             />
-          </div>
+          </motion.div>
 
           {/* Right: Content */}
-          <div className="mx-auto max-w-2xl lg:mx-0 text-center lg:text-left">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-2xl lg:mx-0 text-center lg:text-left"
+          >
             <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
               Ready to save your <span className="text-[#42A5E8]">Time ?</span>
             </h2>
@@ -27,11 +42,15 @@ export default function TimeSaving() {
             </p>
             
             <div className="mt-10 flex items-center justify-center lg:justify-start">
-              <button className="bg-[#42A5E8] hover:bg-[#3494D6] text-white text-[20px] font-bold py-3 px-8 rounded-lg shadow-md transition-all transform hover:scale-105 font-inter">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#42A5E8] hover:bg-[#3494D6] text-white text-[20px] font-bold py-3 px-8 rounded-lg shadow-md transition-all transform font-inter"
+              >
                 Contact Us
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

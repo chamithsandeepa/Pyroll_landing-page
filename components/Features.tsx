@@ -1,4 +1,7 @@
+"use client";
+
 import { CircleDollarSign, MousePointerClick, Users, FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -34,20 +37,30 @@ export default function Features() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-3xl text-center mb-16"
+        >
           <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl font-istok">
             Powerful Features of <span className="text-[#42A5E8]">Payroll</span>
           </h2>
           <p className="mt-4 text-[20px] leading-8 text-[#525252] font-inter">
             Everything you need to handle payroll effortlessly without the manual spreadsheets.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid */}
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {features.map((feature, index) => (
-            <div 
+            <motion.div 
               key={index} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
               className="flex flex-col rounded-2xl bg-[#E0F2FF5C] p-8 transition-all hover:shadow-lg border border-transparent hover:border-gray-100"
             >
               <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-xl ${feature.bg}`}>
@@ -59,7 +72,7 @@ export default function Features() {
               <p className="mt-3 text-[14px] leading-6 text-[#525252] font-inter">
                 {feature.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
